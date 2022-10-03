@@ -31,6 +31,7 @@ public class User {
     @Size(max = 30)
     private String name;
 
+    @NotBlank
     @Size(max = 11)
     private String phonenumber;
 
