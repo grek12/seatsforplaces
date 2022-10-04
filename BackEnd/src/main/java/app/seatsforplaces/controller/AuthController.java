@@ -70,13 +70,13 @@ public class AuthController {
         if (userRepository.existsByPhonenumber(signUpRequest.getPhonenumber())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("Error: Phonenumber is already taken!"));
         }
 
 
         // Create new user's account
-        User user = new User(signUpRequest.getPhonenumber(),
-                signUpRequest.getName(),
+        User user = new User(signUpRequest.getName(),
+                signUpRequest.getPhonenumber(),
                 encoder.encode(signUpRequest.getPassword()));
 
         Set<String> strRoles = signUpRequest.getRole();
