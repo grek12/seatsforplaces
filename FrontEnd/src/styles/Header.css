@@ -1,0 +1,34 @@
+.Header_div{
+    height: 50px;
+    width: 100%;
+    border: red;
+    border-style: solid;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 2px;
+    border-bottom-width: 10px;
+    font-family: 'Jost', sans-serif;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #023047;
+}
+
+.Header_div div{
+    display:inline-block;
+}
+
+.Header_span_teamname{
+    margin-left: 20px;
+    color: #ffb703; 
+    font-family:sans-serif;
+    font-size: 1.6rem;
+}
+
+.Header_a{
+    margin-right: auto;
+    color: #ffb703;
+    font-family:sans-serif;
+    font-size: 1.2rem; 
+}
