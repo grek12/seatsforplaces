@@ -1,22 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import './styles/main.css';
-import Header from './components/Header'
-import { store } from './redux/store' // import your store
+import { store } from './redux/store'
+import { BrowserRouter } from "react-router-dom";
+import App  from "./components/App"
 import { Provider } from 'react-redux'
-import LoginPage from "./components/LoginPage";
-import 'bootstrap/dist/css/bootstrap.css';
-
-const App = () => (
-  <div>
-    <Header/>
-    <LoginPage/>
-  </div>
-  );
+import 'antd/dist/antd.css';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
   document.getElementById("root")
 );
