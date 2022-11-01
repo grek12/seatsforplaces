@@ -7,14 +7,14 @@ import "./Header.scss";
 export const Header: React.FC = () => {
   return (
     <header className="Header">
-        <NavLink className="Header-Logo">
+        <NavLink className="Header-Logo" tag={Link} to='./'>
             Seats For Places
         </NavLink>
         <div className="Header-Menu">
-            <Link className="Header-Menu-Item" to='./'>
-            просмотр мероприятий
+            <Link className="Header-Menu-Item" to='/CreateMeeting'>
+            Просмотр мероприятий
             </Link>
-            <Link className="Header-Menu-Item" to='./'>
+            <Link className="Header-Menu-Item" to='/CreateMeeting'>
             Создать мероприятие
             </Link>
             <Link className="Header-Menu-Item" to='./'>

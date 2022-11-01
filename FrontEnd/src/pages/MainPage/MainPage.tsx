@@ -1,10 +1,10 @@
 import React from 'react';
-import {PortalPage} from '..'
+import { LogIn } from '../../components';
 import "./MainPage.scss"
 
-export const MainPage = () => (
-	<div className='MainPage'>
-		<img src="https://i.ibb.co/Jzr9qqQ/1.png" alt="1" className='MainPage-Img'/>
-		<PortalPage/>
-	</div>
-)
+export const MainPage: React.FC = () => {
+	
+	return(
+	<LogIn></LogIn>
+	)
+}

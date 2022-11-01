@@ -1,13 +1,16 @@
 import React from "react";
 import { Portal } from "../../ui-kit";
-import { LogIn } from "../../components"
 import "./PortalPage.scss";
 
-export const PortalPage: React.FC = () => {
+interface IProps{
+  children : React.ReactNode
+}
+
+export const PortalPage: React.FC<IProps> = ({children}) => {
   return (
     <Portal className="PortalPage">
       <div className="Portal">
-          <LogIn/>
+        {children}
       </div>
     </Portal>
   );

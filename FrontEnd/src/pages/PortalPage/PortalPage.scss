@@ -1,5 +1,13 @@
 @import "../../ui-kit/styles";
 
+.VisiblePortal{
+  visibility: visible;
+}
+
+.CollapsedPortal{
+  visibility: collapse;
+}
+
 .ButtonHeight{
   position: relative;
   display: flex;
