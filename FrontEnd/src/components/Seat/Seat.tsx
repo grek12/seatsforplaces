@@ -3,9 +3,11 @@ import "./Seat.scss"
 
 interface IProps{
     Value : number;
+    Col : number;
+    Row : number;
 }
 
-export const Seat: React.FC<IProps> = ({Value}) => {
+export const Seat: React.FC<IProps> = ({Value, Col, Row}) => {
     const [ClassName, SetClassName] = React.useState("Seat");
     const [Values, SetValue] = React.useState(Value);
 
@@ -17,14 +19,24 @@ export const Seat: React.FC<IProps> = ({Value}) => {
                 break;
             case 1: SetClassName("Seat-important");
                 break;
-            case 2: SetClassName("Seat-taken");
+            case 2: SetClassName("Seat-empty");
             default:
                 break;
         }   
         Value = Values;
     }
 
+    const handleMouseIn = () => {
+        return;
+    }
+
+    const handleMouseOut = () => {
+        return;
+    }
+
     return (
-        <div className={ClassName} onClick={toggleSeat}/>
+        <div className={ClassName} onClick={toggleSeat} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}>
+            {Col}, {Row}
+        </div>
     );    
 }

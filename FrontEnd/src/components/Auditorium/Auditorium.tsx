@@ -26,7 +26,7 @@ export const Auditorium: React.FC<IProps> = ({Array, Columns, Rows}) => {
                 }}>
                     {Array.map((rows, i) =>
                         rows.map((col, k) => (
-                            <Seat key={i+k} Value={Array[i][k]}/>
+                            <Seat key={i+k} Value={Array[i][k]} Col={i} Row={k}/>
                         ))
                     )}
                 </div>
