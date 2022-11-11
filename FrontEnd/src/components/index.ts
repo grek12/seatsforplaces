@@ -7,6 +7,7 @@ import Seat from "./Seat";
 import SignIn from "./SignIn";
 import Tooltip from "./Tooltip";
 import SignControls from "./SignControls";
+import Number from "./Number";
 
 export {
     App,
@@ -18,4 +19,5 @@ export {
     Header,
     Layout,
     LogIn,
+    Number,
 };

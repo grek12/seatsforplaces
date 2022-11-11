@@ -5,22 +5,24 @@ interface IProps{
     Value : number;
     Col : number;
     Row : number;
+    Size : number;
+    left? : number;
+    top? : number;
 }
 
-export const Seat: React.FC<IProps> = ({Value, Col, Row}) => {
-    const [ClassName, SetClassName] = React.useState("Seat");
+export const Seat: React.FC<IProps> = ({Value, Col, Row, Size, left = 0, top = 0}) => {
+    const [ClassName, SetClassName] = React.useState("Seat Place");
     const [Values, SetValue] = React.useState(Value);
 
     const toggleSeat = () => {
         SetValue((Values + 1) % 3);
         switch (Values)
         {
-            case 0: SetClassName("Seat");
+            case 0: SetClassName("Seat Place");
                 break;
-            case 1: SetClassName("Seat-important");
+            case 1: SetClassName("Seat-important Place");
                 break;
-            case 2: SetClassName("Seat-empty");
-            default:
+            default: SetClassName("Seat-empty Place")
                 break;
         }   
         Value = Values;
@@ -35,8 +37,16 @@ export const Seat: React.FC<IProps> = ({Value, Col, Row}) => {
     }
 
     return (
-        <div className={ClassName} onClick={toggleSeat} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut}>
-            {Col}, {Row}
+        <div className={ClassName} onClick={toggleSeat} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut} style={{
+            width : Size,
+            height: Size,
+            left: left,
+            top: top,
+            position : 'absolute',
+        }}>
+            <span className='PlaceNumber'>
+                {Col} , {Row}
+            </span>
         </div>
     );    
 }

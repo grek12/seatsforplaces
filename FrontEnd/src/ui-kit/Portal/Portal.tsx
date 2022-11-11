@@ -9,15 +9,15 @@ interface IProps {
 
 export const Portal : React.FC<IProps> = ( { children, className, el = 'div'} : IProps ) => {
     
-    const [container] = React.useState(document.createElement(el))
+    const [container] = React.useState(document.createElement(el));
     
     if ( className )
         container.classList.add(className);
     React.useEffect(() => {
-        document.body.appendChild(container)
+        document.body.appendChild(container);
         return () => {
-            document.body.removeChild(container)
+            document.body.removeChild(container);
         }
     }, )
-    return ReactDOM.createPortal(children, container)
+    return ReactDOM.createPortal(children, container);
 }

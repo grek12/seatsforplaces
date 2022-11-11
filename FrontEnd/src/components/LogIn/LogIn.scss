@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap");
+@import "../../ui-kit/styles/index";
 
 .LogInButton{
     margin: 15px 0;
 }
 
 :root {
-  --main-color: #6dd5ed;
-  --secondary-color: #2193b0;
+  --secondary-color: #BEE9E8;
+  --main-color: #5FA8D3;
   --gradient: linear-gradient(
     135deg,
     var(--main-color),
@@ -32,6 +33,7 @@ body {
 h1 {
   font-weight: bold;
   margin: 0;
+  color: $color-third;
 }
 
 p {
@@ -40,6 +42,7 @@ p {
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
+  color: $color-third;
 }
 
 .social-container {
@@ -62,7 +65,7 @@ span {
 }
 
 a {
-  color: #333;
+  color: $color-third;
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
@@ -72,7 +75,7 @@ button {
   cursor: pointer;
   border-radius: 20px;
   border: 1px solid var(--main-color);
-  background: var(--main-color);
+  background: var(--secondary-color);
   color: #fff;
   font-size: 12px;
   font-weight: bold;
@@ -83,7 +86,7 @@ button {
 }
 
 button:hover {
-  background: var(--secondary-color);
+  background: var(--main-color);
 }
 
 button:active {
@@ -101,7 +104,7 @@ button.ghost {
 
 button.ghost:hover {
   background: #fff;
-  color: var(--secondary-color);
+  color: var(--main-color);
 }
 
 form {
@@ -150,6 +153,17 @@ input {
 
 .container.right-panel-active .sign-in-container {
   transform: translateY(100%);
+}
+
+.div-container{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
 }
 
 .sign-up-container {
