@@ -8,9 +8,13 @@ import SignIn from "./SignIn";
 import Tooltip from "./Tooltip";
 import SignControls from "./SignControls";
 import Number from "./Number";
+import Changer from "./Changer";
+import Auditorium from "./Auditorium";
 
 export {
     App,
+    Changer,
+    Auditorium,
     Seat,
     Tooltip,
     SignControls,
