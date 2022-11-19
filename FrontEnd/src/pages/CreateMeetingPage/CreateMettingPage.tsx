@@ -25,7 +25,7 @@ export const CreateMeetingPage: React.FC = () => {
 					<div className="MainPage-Steps">
 						<Steps current={CurrentStep} className="MainPage-Stepper">
 							<Step title="Создание"/>
-							<Step title="Компановка"/>
+							<Step title="Компоновка"/>
 							<Step title="Рассадка"/>
 						</Steps>
 					</div>

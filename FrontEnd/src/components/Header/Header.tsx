@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
             Создать мероприятие
             </Link>
             <Link className="Header-Menu-Item" to='./'>
-            Войти/Регистрация
+            Авторизация
             </Link>
         </div>
     </header>

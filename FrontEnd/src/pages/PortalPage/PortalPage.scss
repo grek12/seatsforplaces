@@ -20,7 +20,7 @@
 }
 
 .PortalPage {
-  background-color: $color-portal-background-transparent;
+  background-color: $color-five-t;
   align-items: flex-start;
   bottom: 0;
   display: flex;
@@ -44,7 +44,7 @@
     border-radius: 0.4rem;
     width: 32rem;
     height: 50rem;
-    background-color: #18181b;      
+    background-color: $color-first;      
   }
 
   .ContentPage{
