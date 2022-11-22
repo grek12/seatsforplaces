@@ -18,40 +18,56 @@ export const CreateMeetingPage: React.FC = () => {
 	{
 		case 0:
 		return(
-		<div className='PortalPage'>
-			<div className='Portal'>
-				<div className='MainPage-Col'>
-					<Changer Places={Places} nextStep={() => SetCurrentStep(CurrentStep + 1)}/>
-					<div className="MainPage-Steps">
-						<Steps current={CurrentStep} className="MainPage-Stepper">
-							<Step title="Создание"/>
-							<Step title="Компоновка"/>
-							<Step title="Рассадка"/>
-						</Steps>
+			<div className='PortalPage'>
+				<div className='Portal'>
+					<div className='MainPage-Col'>
+						<Changer Places={Places} nextStep={() => SetCurrentStep(CurrentStep + 1)}/>
+						<div className="MainPage-Steps">
+							<Steps current={CurrentStep} className="MainPage-Stepper">
+								<Step title="Создание"/>
+								<Step title="Компоновка"/>
+								<Step title="Рассадка"/>
+							</Steps>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		)
 		case 1:
 		return(
-		<div className='PortalPage'>
-			<div className='Portal'>
-				<div className='MainPage-Col'>
-					<Auditorium Places={Places}  Padding={5} nextStep={() => SetCurrentStep(CurrentStep + 1)}
-						prevStep={() => SetCurrentStep(CurrentStep - 1)}/>
-					<div className="MainPage-Steps">
-						<Steps current={CurrentStep} className="MainPage-Stepper">
-							<Step title="Создание"/>
-							<Step title="Компоновка"/>
-							<Step title="Рассадка"/>
-						</Steps>
+			<div className='PortalPage'>
+				<div className='Portal'>
+					<div className='MainPage-Col'>
+						<Auditorium Places={Places}  Padding={5} nextStep={() => SetCurrentStep(CurrentStep + 1)}
+							prevStep={() => SetCurrentStep(CurrentStep - 1)}/>
+						<div className="MainPage-Steps">
+							<Steps current={CurrentStep} className="MainPage-Stepper">
+								<Step title="Создание"/>
+								<Step title="Компоновка"/>
+								<Step title="Рассадка"/>
+							</Steps>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		)
 		default:
-			return null;
+			return (
+				<div className='PortalPage'>
+				<div className='Portal'>
+					<div className='MainPage-Col'>
+						<Auditorium Places={Places}  Padding={5} nextStep={() => SetCurrentStep(CurrentStep + 1)}
+							prevStep={() => SetCurrentStep(CurrentStep - 1)}/>
+						<div className="MainPage-Steps">
+							<Steps current={CurrentStep} className="MainPage-Stepper">
+								<Step title="Создание"/>
+								<Step title="Компоновка"/>
+								<Step title="Рассадка"/>
+							</Steps>
+						</div>
+					</div>
+				</div>
+			</div>
+			);
 	}
 }
