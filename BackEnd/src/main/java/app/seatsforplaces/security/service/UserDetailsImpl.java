@@ -1,14 +1,13 @@
 package app.seatsforplaces.security.service;
 
+import app.seatsforplaces.model.Event;
 import app.seatsforplaces.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
@@ -19,17 +18,39 @@ public class UserDetailsImpl implements UserDetails {
 
     private String phonenumber;
 
+    private int creationnum;
+
+    public int getCreationnum() {
+        return creationnum;
+    }
+
     @JsonIgnore
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
 
+    private Set<Event> events = new HashSet<>();
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
+    public void setCreationnum(int creationnum) {
+        this.creationnum = creationnum;
+    }
+
     public UserDetailsImpl(Long id, String phonenumber, String password,
-                           Collection<? extends GrantedAuthority> authorities) {
+                           Collection<? extends GrantedAuthority> authorities, int creationnum,Set<Event> events) {
         this.id = id;
         this.phonenumber = phonenumber;
         this.password = password;
         this.authorities = authorities;
+        this.creationnum = creationnum;
+        this.events = events;
     }
     public static UserDetailsImpl build(User user){
         List<GrantedAuthority> authorities = user.getRoles().stream()
@@ -40,7 +61,9 @@ public class UserDetailsImpl implements UserDetails {
                 user.getId(),
                 user.getPhonenumber(),
                 user.getPassword(),
-                authorities);
+                authorities,
+                user.getCreationnum(),
+                user.getEvents());
     }
     public Long getId() {
         return id;

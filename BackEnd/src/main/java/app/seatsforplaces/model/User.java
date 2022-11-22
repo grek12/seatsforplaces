@@ -39,11 +39,22 @@ public class User {
     @Size(max = 120)
     private String password;
 
+    @NotBlank
+    @Size(max=100)
+    private int creationnum;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_events",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "event_id"))
+    private Set<Event> events = new HashSet<>();
+
 
 
     public User(String name, String phonenumber, String password) {
