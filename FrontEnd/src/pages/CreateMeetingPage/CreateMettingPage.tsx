@@ -4,13 +4,13 @@ import { Auditorium } from '../../components';
 import "./CreateMeetingPage.scss"
 import { Place } from '../../Entity/Classes/Classes';
 import { Steps } from 'antd';
-import { IGuest } from '../../Entity/Interfaces/Interfaces';
+import { IGuest, ISeats } from '../../Entity/Interfaces/Interfaces';
 const { Step } = Steps;
 
 
 
 export const CreateMeetingPage: React.FC = () => {
-	const [Places] = useState<Place>(new Place(new Array<number[]>, 0, 0, new Array<IGuest>, ""));
+	const [Places] = useState<Place>(new Place(new Array<ISeats[]>, 0, 0, new Array<IGuest>, ""));
 	const [CurrentStep, SetCurrentStep] = useState(0);
 
 

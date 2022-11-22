@@ -3,7 +3,7 @@ import Seat from '../Seat';
 import Number from '../Number';
 import List from 'antd/lib/list';
 import "./Auditorium.scss"
-import { IPlace } from '../../Entity/Interfaces/Interfaces';
+import { IPlace, TypeSeats } from '../../Entity/Interfaces/Interfaces';
 
 interface IProps{
     ElementSize? : number;
@@ -14,6 +14,17 @@ interface IProps{
 }
 
 export const Auditorium: React.FC<IProps> = ({Places, ElementSize = 55, Padding, prevStep, nextStep}) => {
+    const [currentColor, SetCurrentColor] = React.useState<TypeSeats>(TypeSeats.Free);
+    const [Room, SetRoom] = React.useState(Places.array);
+
+    const toggleSeatsColor = (Col : number, Row: number) => {
+        Places.array[Row][Col].type = currentColor;
+    }
+
+    React.useEffect(() => {
+        SetRoom(Places.array);
+    }, [Places.array])
+
     return (
         <div className='Portal'>
             <button className='Changer-PrevButton' onClick={prevStep}>
@@ -22,11 +33,11 @@ export const Auditorium: React.FC<IProps> = ({Places, ElementSize = 55, Padding,
             <div className='control'>
                 <div className='Auditorium-Container'>
                     <div className='Hint'>
-                        <div className='Important'/>
+                        <div onClick={() => SetCurrentColor(TypeSeats.Important)} className='Important'/>
                         <div>Важный гость</div>
-                        <div className='Empty'/>
+                        <div onClick={() => SetCurrentColor(TypeSeats.Passage)} className='Empty'/>
                         <div>Проход</div>
-                        <div className='No'/>
+                        <div onClick={() => SetCurrentColor(TypeSeats.Free)} className='No'/>
                         <div>Пустое место</div>
                     </div>
                     <div className='Auditorium-marginAuto'>
@@ -54,9 +65,10 @@ export const Auditorium: React.FC<IProps> = ({Places, ElementSize = 55, Padding,
                                 height : Places.rows * (ElementSize + Padding),
                             }}>
                                 {
-                                    Places.array.map((rows, i) =>
+                                    Room.map((rows, i) =>
                                     rows.map((col, k) => (
-                                        <Seat key={i+k} Value={Places.array[i][k]} Col={i + 1} Row={k + 1} Size={ElementSize} left={(k) * (ElementSize + Padding)} top={(i) * (ElementSize + Padding)}/>
+                                        <Seat key={i+k} Col={i + 1} Row={k + 1} Size={ElementSize} left={(k) * (ElementSize + Padding)}
+                                         top={(i) * (ElementSize + Padding)} type={Places.array[i][k].type} toggleType={toggleSeatsColor}/>
                                     ))
                                 )}
                             </div>

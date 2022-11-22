@@ -1,43 +1,40 @@
 import React from 'react';
+import { TypeSeats } from '../../Entity/Interfaces/Interfaces';
 import "./Seat.scss"
 
 interface IProps{
-    Value : number;
     Col : number;
     Row : number;
     Size : number;
     left? : number;
     top? : number;
+    type: TypeSeats;
+    toggleType(Row : number, Col : number) : void;
 }
 
-export const Seat: React.FC<IProps> = ({Value, Col, Row, Size, left = 0, top = 0}) => {
-    const [ClassName, SetClassName] = React.useState("Seat Place");
-    const [Values, SetValue] = React.useState(Value);
+export const Seat: React.FC<IProps> = ({Col, Row, Size, left = 0, top = 0, type, toggleType}) => {
 
-    const toggleSeat = () => {
-        SetValue((Values + 1) % 3);
-        switch (Values)
-        {
-            case 0: SetClassName("Seat Place");
-                break;
-            case 1: SetClassName("Seat-important Place");
-                break;
-            default: SetClassName("Seat-empty Place")
-                break;
-        }   
-        Value = Values;
+    const toggleColor = () => {
+        toggleType(Row - 1, Col - 1);
     }
 
-    const handleMouseIn = () => {
-        return;
-    }
-
-    const handleMouseOut = () => {
-        return;
-    }
-
+    if (type == TypeSeats.Free){
+        return (
+            <div className="Seat Place" onClick={toggleColor} style={{
+                width : Size,
+                height: Size,
+                left: left,
+                top: top,
+                position : 'absolute',
+            }}>
+                <span className='PlaceNumber'>
+                    {Col} , {Row}
+                </span>
+            </div>
+        );  
+    }else if (type == TypeSeats.Important){
     return (
-        <div className={ClassName} onClick={toggleSeat} onMouseOver={handleMouseIn} onMouseOut={handleMouseOut} style={{
+        <div className="Seat-important Place" onClick={toggleColor} style={{
             width : Size,
             height: Size,
             left: left,
@@ -48,5 +45,21 @@ export const Seat: React.FC<IProps> = ({Value, Col, Row, Size, left = 0, top = 0
                 {Col} , {Row}
             </span>
         </div>
-    );    
+    );
+    }else{
+    return (
+        <div className="Seat-empty Place" onClick={toggleColor} style={{
+            width : Size,
+            height: Size,
+            left: left,
+            top: top,
+            position : 'absolute',
+        }}>
+            <span className='PlaceNumber'>
+                {Col} , {Row}
+            </span>
+        </div>
+    );  
+    }
+
 }

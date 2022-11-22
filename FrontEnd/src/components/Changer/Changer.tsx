@@ -1,8 +1,8 @@
 import { Input, InputNumber, Button, List } from 'antd';
 import React, { useState } from 'react';
-import { IPlace } from '../../Entity/Interfaces/Interfaces';
+import { IPlace, ISeats, TypeSeats } from '../../Entity/Interfaces/Interfaces';
 import "./Changer.scss"
-import { Guest } from '../../Entity/Classes/Classes';
+import { Guest, Seats } from '../../Entity/Classes/Classes';
 
 
 interface IProps{
@@ -22,7 +22,6 @@ export const Changer: React.FC<IProps> = ({Places, nextStep}) => {
             Places.guest.push(CurrentGuest);
             CurrentGuest = new Guest("");
         }
-        console.log(Places);
     }
 
     const onPlaceNameChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -35,20 +34,18 @@ export const Changer: React.FC<IProps> = ({Places, nextStep}) => {
 
     const NextStep = () => {
         let i = 0;
-        Places.array = new Array<number[]>;
+        Places.array = new Array<ISeats[]>;
         while (i < Places.rows)
         {
             let j = 0;
-            const arr = new Array<number>;
+            const arr = new Array<ISeats>;
             while (j < Places.columns)
             {
-                arr.push(0);
+                arr.push(new Seats(j,i, TypeSeats.Free));
                 j++;
-                console.log(j);
             }
             Places.array.push(arr);
             i++;
-            console.log(i);
         }
         nextStep();
     }
