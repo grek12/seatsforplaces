@@ -1,0 +1,75 @@
+@import "../../ui-kit/styles/index";
+
+.Changer{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    &-Container{
+        width: 600px;
+        height: 600px;
+        background-color: #fff;
+        border-radius: 8px;
+        border-style: solid;
+        border-width: 0px;
+        position: relative;
+        overflow: hidden;
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+        flex-direction: column;
+    }
+    &-width{
+        width: 100% !important;
+    }
+    &-marginAuto{
+        margin: auto;
+    }
+    &-InputGroup{
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        width: 80%;      
+        &-Row{
+            margin-top: 32px;
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+    &-Text{
+        @include roboto-16-bold;
+        margin-bottom: 8px;
+        text-align: center;
+        margin-top: 0 auto;
+        margin-bottom: 0 auto;
+    }
+    &-RowCols{
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+    }
+    &-margin{
+        margin-top: 32px;
+    }
+    &-ListGuest{
+        margin-left: 8px;
+        border-radius: 8px;
+        background-color: #fff;
+        width: 300px;
+    }
+    &-PrevButton{
+        @include roboto-16-bold;
+        width: 150px;
+        border-radius: 8px;
+        margin-right: 8px;
+    }
+    &-NextButton{
+        @include roboto-16-bold;
+        width: 150px;
+        border-radius: 8px;
+        margin-left: 8px;
+    }
+
+}

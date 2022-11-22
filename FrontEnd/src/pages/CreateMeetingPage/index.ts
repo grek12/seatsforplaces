@@ -1,0 +1,1 @@
+export {CreateMeetingPage as default} from "./CreateMettingPage";

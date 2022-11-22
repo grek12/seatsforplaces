@@ -1,0 +1,25 @@
+@import "../../ui-kit/styles/index";
+
+.Seat{
+    border-radius: 8px;
+    background-color: $color-second;
+    &-empty{
+        border-radius: 8px;
+        background-color: #FFF;
+        border: 0.3px dotted $color-third-t;
+    }
+    &-important{
+        border-radius: 8px;
+        background-color: $color-orange;
+    }
+}
+
+.Place{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PlaceNumber{
+    user-select: none;
+}
