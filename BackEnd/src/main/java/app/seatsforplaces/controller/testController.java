@@ -11,7 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -48,6 +48,7 @@ public class testController {
     @GetMapping("/user")
     @PreAuthorize("hasRole('USER')")
     public String userAcces(){
+
         return "User Contetnt.";
     }
 }

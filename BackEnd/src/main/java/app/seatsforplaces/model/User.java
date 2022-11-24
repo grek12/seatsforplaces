@@ -55,6 +55,12 @@ public class User {
     inverseJoinColumns = @JoinColumn(name = "event_id"))
     private Set<Event> events = new HashSet<>();
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_guests",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "guest_id"))
+    private Set<Guest> guest = new HashSet<>();
+
 
 
     public User(String name, String phonenumber, String password) {

@@ -2,17 +2,19 @@ package app.seatsforplaces.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Calendar;
+import java.io.Serializable;
+import java.util.*;
 
 
 @Getter
@@ -20,11 +22,17 @@ import java.util.Calendar;
 @NoArgsConstructor
 @Entity
 @Table(name = "events")
-public class Event {
+@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
+public class Event implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank
+    private int columns;
+    @NotBlank
+    private int rows;
 
     @NotBlank
     @Size(max = 30)
@@ -38,17 +46,27 @@ public class Event {
     @DateTimeFormat
     private Calendar datetime;
 
-    @NotEmpty
-    @Type( type = "app.seatsforplaces.service.impl.BiDirectionalIntArrayUserType")
-    @Column(columnDefinition = "int[][]")
-    private int[][] seatnum;
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    private Seat[][] seats;
 
-    public Event(String nameevent,String address, Calendar datetime, int[][] seatnum){
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "event_guests",
+            joinColumns = @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "guest_id"))
+    private List<Guest> guests;
+
+
+
+
+    public Event(String nameevent, String address, Calendar datetime, int columns, int rows, Seat[][] seats, List<Guest> guests){
         this.nameevent = nameevent;
         this.address=address;
         this.datetime=datetime;
-        this.seatnum=seatnum;
-
+        this.columns = columns;
+        this.rows = rows;
+        this.seats = seats;
+        this.guests = guests;
     }
 
 
