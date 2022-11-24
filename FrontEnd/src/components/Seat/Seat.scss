@@ -8,10 +8,20 @@
         background-color: #FFF;
         border: 0.3px dotted $color-third-t;
     }
+    &-empty:hover{
+        border:1px solid #000;
+    }
     &-important{
         border-radius: 8px;
         background-color: $color-orange;
     }
+    &-important:hover{
+        border:1px solid #000;
+    }
+}
+
+.Seat:hover{
+    border:1px solid #000;
 }
 
 .Place{

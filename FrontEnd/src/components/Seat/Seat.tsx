@@ -9,16 +9,22 @@ interface IProps{
     left? : number;
     top? : number;
     type: TypeSeats;
-    toggleType(Row : number, Col : number) : void;
+    toggleType(Row : number, Col : number) : TypeSeats;
 }
 
 export const Seat: React.FC<IProps> = ({Col, Row, Size, left = 0, top = 0, type, toggleType}) => {
+    const [Type, SetType] = React.useState(type);
+
+    React.useEffect(() => {
+        SetType(type);
+    }, [type]
+    )
 
     const toggleColor = () => {
-        toggleType(Row - 1, Col - 1);
+        SetType(toggleType(Row, Col));
     }
 
-    if (type == TypeSeats.Free){
+    if (Type == TypeSeats.Free){
         return (
             <div className="Seat Place" onClick={toggleColor} style={{
                 width : Size,
@@ -32,7 +38,7 @@ export const Seat: React.FC<IProps> = ({Col, Row, Size, left = 0, top = 0, type,
                 </span>
             </div>
         );  
-    }else if (type == TypeSeats.Important){
+    }else if (Type == TypeSeats.Important){
     return (
         <div className="Seat-important Place" onClick={toggleColor} style={{
             width : Size,

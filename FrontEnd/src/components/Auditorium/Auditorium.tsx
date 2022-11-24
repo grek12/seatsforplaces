@@ -15,15 +15,11 @@ interface IProps{
 
 export const Auditorium: React.FC<IProps> = ({Places, ElementSize = 55, Padding, prevStep, nextStep}) => {
     const [currentColor, SetCurrentColor] = React.useState<TypeSeats>(TypeSeats.Free);
-    const [Room, SetRoom] = React.useState(Places.array);
 
     const toggleSeatsColor = (Col : number, Row: number) => {
         Places.array[Row][Col].type = currentColor;
+        return (currentColor);
     }
-
-    React.useEffect(() => {
-        SetRoom(Places.array);
-    }, [Places.array])
 
     return (
         <div className='Portal'>
@@ -33,12 +29,18 @@ export const Auditorium: React.FC<IProps> = ({Places, ElementSize = 55, Padding,
             <div className='control'>
                 <div className='Auditorium-Container'>
                     <div className='Hint'>
-                        <div onClick={() => SetCurrentColor(TypeSeats.Important)} className='Important'/>
-                        <div>Важный гость</div>
-                        <div onClick={() => SetCurrentColor(TypeSeats.Passage)} className='Empty'/>
-                        <div>Проход</div>
-                        <div onClick={() => SetCurrentColor(TypeSeats.Free)} className='No'/>
-                        <div>Пустое место</div>
+                        <div className='Hint-item' onClick={() => SetCurrentColor(TypeSeats.Important)}>
+                            <div className='Important'/>
+                            <div>Важный гость</div>
+                        </div>
+                        <div className='Hint-item' onClick={() => SetCurrentColor(TypeSeats.Passage)}>
+                            <div className='Empty'/>
+                            <div>Проход</div>
+                        </div>
+                        <div className='Hint-item' onClick={() => SetCurrentColor(TypeSeats.Free)}>
+                            <div className='No'/>
+                            <div>Пустое место</div>
+                        </div>
                     </div>
                     <div className='Auditorium-marginAuto'>
                         <div className='Numbers-Column' style={{
@@ -65,9 +67,9 @@ export const Auditorium: React.FC<IProps> = ({Places, ElementSize = 55, Padding,
                                 height : Places.rows * (ElementSize + Padding),
                             }}>
                                 {
-                                    Room.map((rows, i) =>
+                                    Places.array.map((rows, i) =>
                                     rows.map((col, k) => (
-                                        <Seat key={i+k} Col={i + 1} Row={k + 1} Size={ElementSize} left={(k) * (ElementSize + Padding)}
+                                        <Seat key={i+k} Col={i} Row={k} Size={ElementSize} left={(k) * (ElementSize + Padding)}
                                          top={(i) * (ElementSize + Padding)} type={Places.array[i][k].type} toggleType={toggleSeatsColor}/>
                                     ))
                                 )}
