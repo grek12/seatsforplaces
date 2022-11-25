@@ -44,11 +44,20 @@ public class testController {
     public String adminAcces(){
         return "Admin Contetnt.";
     }
-
+/*
     @GetMapping("/user")
     @PreAuthorize("hasRole('USER')")
     public String userAcces(){
 
         return "User Contetnt.";
     }
+*/
+    @GetMapping("/user")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> userAcces(){
+
+      return   ResponseEntity
+                .ok(new MessageResponse("Блять....."));
+    }
+
 }
