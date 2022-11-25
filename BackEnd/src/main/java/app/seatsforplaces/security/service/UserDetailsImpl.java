@@ -16,7 +16,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private Long id;
 
-    private String phonenumber;
+    private String email;
 
     private int creationnum;
 
@@ -43,10 +43,10 @@ public class UserDetailsImpl implements UserDetails {
         this.creationnum = creationnum;
     }
 
-    public UserDetailsImpl(Long id, String phonenumber, String password,
+    public UserDetailsImpl(Long id, String email, String password,
                            Collection<? extends GrantedAuthority> authorities, int creationnum,Set<Event> events) {
         this.id = id;
-        this.phonenumber = phonenumber;
+        this.email = email;
         this.password = password;
         this.authorities = authorities;
         this.creationnum = creationnum;
@@ -59,7 +59,7 @@ public class UserDetailsImpl implements UserDetails {
 
         return new UserDetailsImpl(
                 user.getId(),
-                user.getPhonenumber(),
+                user.getEmail(),
                 user.getPassword(),
                 authorities,
                 user.getCreationnum(),
@@ -80,7 +80,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return phonenumber;
+        return email;
     }
 
     @Override

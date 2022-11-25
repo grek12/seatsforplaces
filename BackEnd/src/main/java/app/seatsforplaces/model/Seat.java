@@ -1,33 +1,39 @@
 package app.seatsforplaces.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 @AllArgsConstructor
-@Table(name = "guests")
-public class Guest implements Serializable {
+@Entity
+@Table(name = "seats")
+public class Seat implements Serializable {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "guest")
-    private Seat seat;
+    private int x;
 
-    @NotBlank
-    String name;
+    private int y;
+
+
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Guest guest;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private TypeSeats type;
+
 
 
 }
