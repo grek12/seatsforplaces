@@ -31,7 +31,6 @@ export interface IUser{
 export interface IRole{
     id?: number;
     name : ERole;
-
 }
 
 export enum ETypeSeats{
