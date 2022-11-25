@@ -1,6 +1,6 @@
 import { Input, InputNumber, Button, List } from 'antd';
 import React, { useState } from 'react';
-import { IPlace, ISeats, TypeSeats } from '../../Entity/Interfaces/Interfaces';
+import { IPlace, ISeats, ETypeSeats} from '../../Entity/Interfaces/Interfaces';
 import "./Changer.scss"
 import { Guest, Seats } from '../../Entity/Classes/Classes';
 
@@ -41,7 +41,7 @@ export const Changer: React.FC<IProps> = ({Places, nextStep}) => {
             const arr = new Array<ISeats>;
             while (j < Places.columns)
             {
-                arr.push(new Seats(j,i, TypeSeats.Free));
+                arr.push(new Seats(j,i, ETypeSeats.Free));
                 j++;
             }
             Places.array.push(arr);

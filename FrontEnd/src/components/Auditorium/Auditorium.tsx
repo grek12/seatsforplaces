@@ -3,7 +3,7 @@ import Seat from '../Seat';
 import Number from '../Number';
 import List from 'antd/lib/list';
 import "./Auditorium.scss"
-import { IPlace, TypeSeats } from '../../Entity/Interfaces/Interfaces';
+import { IPlace, ETypeSeats } from '../../Entity/Interfaces/Interfaces';
 
 interface IProps{
     ElementSize? : number;
@@ -14,7 +14,7 @@ interface IProps{
 }
 
 export const Auditorium: React.FC<IProps> = ({Places, ElementSize = 55, Padding, prevStep, nextStep}) => {
-    const [currentColor, SetCurrentColor] = React.useState<TypeSeats>(TypeSeats.Free);
+    const [currentColor, SetCurrentColor] = React.useState<ETypeSeats>(ETypeSeats.Free);
 
     const toggleSeatsColor = (Col : number, Row: number) => {
         Places.array[Row][Col].type = currentColor;
@@ -29,15 +29,15 @@ export const Auditorium: React.FC<IProps> = ({Places, ElementSize = 55, Padding,
             <div className='control'>
                 <div className='Auditorium-Container'>
                     <div className='Hint'>
-                        <div className='Hint-item' onClick={() => SetCurrentColor(TypeSeats.Important)}>
+                        <div className='Hint-item' onClick={() => SetCurrentColor(ETypeSeats.Important)}>
                             <div className='Important'/>
                             <div>Важный гость</div>
                         </div>
-                        <div className='Hint-item' onClick={() => SetCurrentColor(TypeSeats.Passage)}>
+                        <div className='Hint-item' onClick={() => SetCurrentColor(ETypeSeats.Passage)}>
                             <div className='Empty'/>
                             <div>Проход</div>
                         </div>
-                        <div className='Hint-item' onClick={() => SetCurrentColor(TypeSeats.Free)}>
+                        <div className='Hint-item' onClick={() => SetCurrentColor(ETypeSeats.Free)}>
                             <div className='No'/>
                             <div>Пустое место</div>
                         </div>

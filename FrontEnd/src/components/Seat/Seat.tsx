@@ -1,5 +1,5 @@
 import React from 'react';
-import { TypeSeats } from '../../Entity/Interfaces/Interfaces';
+import { ETypeSeats } from '../../Entity/Interfaces/Interfaces';
 import "./Seat.scss"
 
 interface IProps{
@@ -8,8 +8,8 @@ interface IProps{
     Size : number;
     left? : number;
     top? : number;
-    type: TypeSeats;
-    toggleType(Row : number, Col : number) : TypeSeats;
+    type: ETypeSeats;
+    toggleType(Row : number, Col : number) : ETypeSeats;
 }
 
 export const Seat: React.FC<IProps> = ({Col, Row, Size, left = 0, top = 0, type, toggleType}) => {
@@ -24,7 +24,7 @@ export const Seat: React.FC<IProps> = ({Col, Row, Size, left = 0, top = 0, type,
         SetType(toggleType(Row, Col));
     }
 
-    if (Type == TypeSeats.Free){
+    if (Type == ETypeSeats.Free){
         return (
             <div className="Seat Place" onClick={toggleColor} style={{
                 width : Size,
@@ -38,7 +38,7 @@ export const Seat: React.FC<IProps> = ({Col, Row, Size, left = 0, top = 0, type,
                 </span>
             </div>
         );  
-    }else if (Type == TypeSeats.Important){
+    }else if (Type == ETypeSeats.Important){
     return (
         <div className="Seat-important Place" onClick={toggleColor} style={{
             width : Size,
