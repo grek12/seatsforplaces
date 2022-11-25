@@ -14,14 +14,14 @@ public class JwtResponse {
 
    private Long id;
 
-    private String phonenumber;
+    private String email;
 
    private List<String> roles;
 
-    public JwtResponse(String accessToken, Long id, String phonenumber,  List<String> roles) {
+    public JwtResponse(String accessToken, Long id, String email,  List<String> roles) {
         this.token = accessToken;
         this.id = id;
-        this.phonenumber = phonenumber;
+        this.email = email;
         this.roles = roles;
     }
     public String getAccessToken() {
@@ -49,12 +49,12 @@ public class JwtResponse {
     }
 
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<String> getRoles() {

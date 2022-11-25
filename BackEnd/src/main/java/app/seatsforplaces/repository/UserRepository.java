@@ -12,8 +12,8 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository  extends JpaRepository<User,Long> {
-    Optional<User> findByPhonenumber(String phonenumber);
-    boolean existsByPhonenumber(String phonenumber);
+    Optional<User> findByEmail(String email);
+    boolean existsByEmail(String email);
     @Transactional
     @Modifying
     @Query("update User ear set ear.creationnum = ?1 where ear.id = ?2")

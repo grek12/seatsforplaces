@@ -34,7 +34,7 @@ public class JwtUtils {
                 .compact();
     }
 
-    public String getPhoneNumberFromJwtToken(String token){
+    public String getEmailFromJwtToken(String token){
         return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
     }
 

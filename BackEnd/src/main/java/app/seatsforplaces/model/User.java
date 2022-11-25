@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
@@ -17,7 +18,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users",
 uniqueConstraints = {
-        @UniqueConstraint(columnNames = "phonenumber")
+        @UniqueConstraint(columnNames = "email")
 })
 
 public class User {
@@ -32,8 +33,9 @@ public class User {
     private String name;
 
     @NotBlank
+    @Email
     @Size(max = 11)
-    private String phonenumber;
+    private String email;
 
     @NotBlank
     @Size(max = 120)
@@ -63,9 +65,9 @@ public class User {
 
 
 
-    public User(String name, String phonenumber, String password) {
+    public User(String name, String email, String password) {
         this.name = name;
-        this.phonenumber = phonenumber;
+        this.email = email;
         this.password = password;
     }
 
