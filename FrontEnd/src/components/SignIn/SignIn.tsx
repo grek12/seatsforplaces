@@ -22,7 +22,6 @@ export const SignIn: React.FC = () =>{
 					alert("Неверный логин или пароль")
 			}
 		}
-        console.log("Qwe");
 	}
 
 
@@ -48,8 +47,6 @@ export const SignIn: React.FC = () =>{
         }
         else
             console.log("Ебанат?");
-        CheckAuth();
-        console.log("qwe");
     }
 
     return (
@@ -59,6 +56,7 @@ export const SignIn: React.FC = () =>{
                 <input type="email" value={Email} placeholder="Email" onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => SetEmail(e.target.value)}/>
                 <input type="password" value={Password} placeholder="Password" onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => SetPassword(e.target.value)}/>
                 <button className='LogInButton' onClick={SignIn}>Войти!</button>
+                <button className='LogInButton' onClick={CheckAuth}>Tecт</button>
             </div>
         </div>
     );
