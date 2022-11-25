@@ -5,6 +5,7 @@ import "./CreateMeetingPage.scss"
 import { Place } from '../../Entity/Classes/Classes';
 import { Steps } from 'antd';
 import { IGuest, ISeats } from '../../Entity/Interfaces/Interfaces';
+import Seating from '../../components/Seating';
 const { Step } = Steps;
 
 
@@ -56,7 +57,7 @@ export const CreateMeetingPage: React.FC = () => {
 				<div className='PortalPage'>
 				<div className='Portal'>
 					<div className='MainPage-Col'>
-						<Auditorium Places={Places}  Padding={5} nextStep={() => SetCurrentStep(CurrentStep + 1)}
+						<Seating Places={Places}  Padding={5} nextStep={() => SetCurrentStep(CurrentStep + 1)}
 							prevStep={() => SetCurrentStep(CurrentStep - 1)}/>
 						<div className="MainPage-Steps">
 							<Steps current={CurrentStep} className="MainPage-Stepper">
