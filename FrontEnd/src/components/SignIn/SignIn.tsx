@@ -5,12 +5,12 @@ export const SignIn: React.FC = () =>{
     const [Email, SetEmail] = React.useState("");
     const [Password, SetPassword] = React.useState("");
 
-
+/*
     const CheckAuth = async () => {
 		if (localStorage.getItem("Token") != undefined){
 			const response = await fetch(BaseURL.concat("/api/test/user"), {
 					method: "GET",
-					headers: {"Authorization" : `Bearer ${localStorage.getItem("Token")}`},
+					headers: {"Authorization" : "Bearer" + localStorage.getItem("Token"), "Content-Type": "application/json"},
 			})
 			if (response.ok === true) {
 					const data = await response.json()
@@ -23,6 +23,29 @@ export const SignIn: React.FC = () =>{
 			}
 		}
 	}
+*/
+    const CheckAuth = async () => {
+
+          const  auth = localStorage.getItem("Token");
+        const response = await fetch(BaseURL.concat("/api/test/user"), {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + auth,
+            }
+        })
+        if (response.ok === true) {
+            const data = await response.json()
+            alert("Блять");
+            console.log(data);
+        } else {
+            const errorData = await response.json();
+            console.log("errors", errorData);
+            alert("Неверный логин или пароль")
+        }
+    }
+
 
 
     const SignIn = async() => {
@@ -39,6 +62,7 @@ export const SignIn: React.FC = () =>{
             if (response.ok === true) {
                 const data = await response.json()
                 localStorage.setItem("Token", data.accessToken);
+                console.log(data);
             } else {
                 const errorData = await response.json();
                 console.log("errors", errorData);
