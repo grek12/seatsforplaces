@@ -14,11 +14,32 @@ export interface ISeats{
     x: number;
     y: number;
     guest: IGuest | undefined;
-    type : TypeSeats;
+    type : ETypeSeats;
 }
 
-export enum TypeSeats{
+
+export interface IUser{
+    id?: number;
+    name: string;
+    email : string;
+    password : string;
+    creationnum? : number;
+    Role? : IRole;
+
+}
+
+export interface IRole{
+    id?: number;
+    name : ERole;
+}
+
+export enum ETypeSeats{
     Important,
     Free,
     Passage,
+}
+
+export enum ERole{
+    ROLE_USER,
+    ROLE_ADMIN,
 }
