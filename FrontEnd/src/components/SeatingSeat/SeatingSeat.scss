@@ -1,0 +1,31 @@
+@import "../../ui-kit/styles/index";
+
+.SeatingSeat{
+    border-radius: 8px;
+    background-color: $color-second;
+    &-empty{
+        border-radius: 8px;
+        background-color: #FFF;
+    }
+    &-important{
+        border-radius: 8px;
+        background-color: $color-orange;
+    }
+    &-important:hover{
+        border:1px solid #000;
+    }
+}
+
+.SeatingSeat:hover{
+    border:1px solid #000;
+}
+
+.PlaceSeat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PlaceSeatNumber{
+    user-select: none;
+}

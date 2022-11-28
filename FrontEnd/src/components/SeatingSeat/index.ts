@@ -1,0 +1,1 @@
+export { SeatingSeat as default } from "./SeatingSeat" 
