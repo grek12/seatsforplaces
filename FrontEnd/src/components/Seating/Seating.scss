@@ -67,7 +67,7 @@
     background-color: $color-second;
 }
 
-.Hint{
+.HintS{
     display: flex;
     flex-direction: row;
     margin-top: 16px;
@@ -80,9 +80,5 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-    }
-    &-item:hover{
-        border : 1px solid #000;
-        border-radius: 8px;
     }
 }
