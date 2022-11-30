@@ -56,8 +56,23 @@ public class testController {
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> userAcces(){
 
+
       return   ResponseEntity
-                .ok(new MessageResponse("Блять....."));
+                .ok(new MessageResponse("работает))"));
+    }
+
+  //гет эвента, гет эвентов
+    @GetMapping("/user/events")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> getEvents(){
+        return ResponseEntity.ok(eventService.getAll());
+    }
+
+    @GetMapping("/user/event/{eventId}")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> getEvent(@PathVariable Long  eventId){
+
+        return ResponseEntity.ok(eventService.getEvent(eventId));
     }
 
 }

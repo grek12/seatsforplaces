@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -32,6 +33,9 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private GuestRepository guestRepository;
 
+
+
+    //если гостя нет, то создать его...; 1 гость все вип гости...
     @Override
     public boolean testAddEvent(Event event) {
         UserDetailsImpl userTemp = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -46,8 +50,10 @@ public class EventServiceImpl implements EventService {
             int num2 = num-1;
             userRepository.setnum(num2,id);
             guestRepository.saveAllAndFlush(event.getGuests());
+
             List <Seat> col = Arrays.stream(event.getSeats()).flatMap(Arrays::stream).collect(Collectors.toList());
             seatRepository.saveAllAndFlush(col);
+
             return true;
         }else{
         return false;
@@ -62,5 +68,10 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> getAll() {
         return eventRepository.findAll();
+    }
+
+    @Override
+    public Optional<Event> getEvent(Long id) {
+       return eventRepository.findById(id);
     }
 }
