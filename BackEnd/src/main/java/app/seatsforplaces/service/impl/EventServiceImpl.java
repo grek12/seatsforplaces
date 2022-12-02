@@ -74,4 +74,15 @@ public class EventServiceImpl implements EventService {
     public Optional<Event> getEvent(Long id) {
        return eventRepository.findById(id);
     }
+
+    @Override
+    public boolean chooseplace(Event event) {
+        UserDetailsImpl userTemp = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = userTemp.getId();
+        Long eventId =event.getId();
+        eventRepository.findById(eventId).get().setSeats(event.getSeats());
+        eventRepository.findById(eventId).get().setGuests(event.getGuests());
+
+        return true;
+    }
 }

@@ -44,14 +44,7 @@ public class testController {
     public String adminAcces(){
         return "Admin Contetnt.";
     }
-/*
-    @GetMapping("/user")
-    @PreAuthorize("hasRole('USER')")
-    public String userAcces(){
 
-        return "User Contetnt.";
-    }
-*/
     @GetMapping("/user")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> userAcces(){
@@ -73,6 +66,19 @@ public class testController {
     public ResponseEntity<?> getEvent(@PathVariable Long  eventId){
 
         return ResponseEntity.ok(eventService.getEvent(eventId));
+    }
+
+
+    @PostMapping("/user/updateeevent")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> updateEvent(@RequestBody Event event){
+
+        if(eventService.chooseplace(event)){
+        return ResponseEntity
+                .ok(new MessageResponse("OK."));
+        }else return ResponseEntity
+                .badRequest()
+                .body(new MessageResponse("Error"));
     }
 
 }

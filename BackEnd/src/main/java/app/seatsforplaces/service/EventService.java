@@ -13,5 +13,7 @@ public interface EventService {
 
     Optional<Event> getEvent(Long id);
 
+    boolean chooseplace(Event event);
+
 
 }
