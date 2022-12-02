@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EventService {
-    boolean testAddEvent(Event event);
+    Long testAddEvent(Event event);
 
     List<Event> getAll();
 

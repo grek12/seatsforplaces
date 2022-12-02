@@ -26,10 +26,10 @@ public class testController {
     @PostMapping("/user/testcreateevent")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> newEventTest(@RequestBody Event newEvent){
-
-        if (eventService.testAddEvent(newEvent)==true){
+            Long id = eventService.testAddEvent(newEvent);
+        if (id!=0){
            return ResponseEntity
-                    .ok(new MessageResponse("Create event successfully!"));
+                    .ok(id);
         }else{
            return ResponseEntity
                     .badRequest()

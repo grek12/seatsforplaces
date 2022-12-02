@@ -37,7 +37,7 @@ public class EventServiceImpl implements EventService {
 
     //если гостя нет, то создать его...; 1 гость все вип гости...
     @Override
-    public boolean testAddEvent(Event event) {
+    public Long testAddEvent(Event event) {
         UserDetailsImpl userTemp = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long id = userTemp.getId();
         int num = userTemp.getCreationnum();
@@ -54,9 +54,9 @@ public class EventServiceImpl implements EventService {
             List <Seat> col = Arrays.stream(event.getSeats()).flatMap(Arrays::stream).collect(Collectors.toList());
             seatRepository.saveAllAndFlush(col);
 
-            return true;
+            return event.getId();
         }else{
-        return false;
+        return Long.valueOf(0);
         }
     }
 
