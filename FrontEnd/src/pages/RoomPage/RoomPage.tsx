@@ -24,6 +24,7 @@ export const RoomPage: React.FC<IProps> = ({id}) => {
 			if (response.ok === true) {
 				const data = await response.json()
 				const p = new Place(data.seats, data.rows, data.columns, data.guests, data.nameevent);
+				console.log(data);
 				SetPlaces(p);
 			} else {
 				const errorData = await response.json();
