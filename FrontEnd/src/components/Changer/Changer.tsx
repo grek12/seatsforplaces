@@ -62,13 +62,13 @@ export const Changer: React.FC<IProps> = ({Places, nextStep}) => {
                                     <div className='Changer-Text'>
                                         Кол-во рядов
                                     </div>
-                                    <InputNumber min={1} max={100} defaultValue={Places.rows} onChange={value => Places.rows = value ?? 0}/>
+                                    <InputNumber min={1} max={100} defaultValue={Places.rows} onChange={value => Places.rows = value ?? 1}/>
                                 </div>
                                 <div className='Changer-InputGroup-Row'>
                                     <div className='Changer-Text'>
                                         Кол-во мест в ряду
                                     </div>
-                                    <InputNumber min={1} max={100} defaultValue={Places.columns} onChange={value => Places.columns = value ?? 0}/>
+                                    <InputNumber min={1} max={100} defaultValue={Places.columns} onChange={value => Places.columns = value ?? 1}/>
                                 </div>
                             </div>
                             <div className='Changer-Text'>Добавьте гостей!</div>

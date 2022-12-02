@@ -22,8 +22,8 @@ export const SignUp: React.FC = () =>{
             })
             if (response.ok === true) {
                 const data = await response.json()
-                console.log(data);
-                alert("Регистрация прошла успешно");
+                localStorage.setItem("Token", data.accessToken);
+                window.location.assign('http://localhost:4000/');
             } else {
                 const errorData = await response.json();
                 console.log("errors", errorData);

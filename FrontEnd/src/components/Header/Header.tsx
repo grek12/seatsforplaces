@@ -4,8 +4,20 @@ import { NavLink } from "reactstrap";
 import "./Header.scss";
 
 export const Header: React.FC = () => {
-	const [IsAuth] = React.useState(false);
-	const [Name] = React.useState("");
+
+	const CheckAuth = () => {
+		if (localStorage.getItem("Token") != undefined)
+			return true;
+		return false;
+	}
+
+	const LogOut = () => {
+		localStorage.removeItem("Token");
+		SetIsAuth(false);
+	}
+
+	const [IsAuth, SetIsAuth] = React.useState(CheckAuth());
+
 
 	if (IsAuth == false)
 	{
@@ -21,7 +33,7 @@ export const Header: React.FC = () => {
 							<Link className="Header-Menu-Item" to='/CreateMeeting'>
 							Создать мероприятие
 							</Link>
-							<Link className="Header-Menu-Item" to='./'>
+							<Link className="Header-Menu-Item" to='./Sign'>
 							Авторизация
 							</Link>
 					</div>
@@ -40,9 +52,9 @@ export const Header: React.FC = () => {
 							<Link className="Header-Menu-Item" to='/CreateMeeting'>
 							Создать мероприятие
 							</Link>
-							<div className="Header-Menu-Item">
-								{Name}
-							</div>
+							<Link className="Header-Menu-Item" onClick={LogOut} to='/Sign'>
+							Выйти из аккаунта
+							</Link>
 					</div>
 			</header>
 		);
