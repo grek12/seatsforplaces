@@ -43,7 +43,7 @@ export const SeatingSeat: React.FC<IProps> = ({Col, Row, Size, left = 0, top = 0
     );
     }else{
     return (
-        <div className="SeatingSeat-empty Place" style={{
+        <div className="SeatingSeat-important Place" style={{
             width : Size,
             height: Size,
             left: left,

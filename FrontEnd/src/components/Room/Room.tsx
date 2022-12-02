@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import List from 'antd/lib/list';
 import "./Room.scss"
 import { IPlace} from '../../Entity/Interfaces/Interfaces';
@@ -7,19 +7,18 @@ import SeatingSeat from '../SeatingSeat';
 interface IProps{
 	ElementSize? : number;
 	Padding : number;
-	Place : IPlace;
+	Places : IPlace;
 }
 
-export const Room: React.FC<IProps> = ({Place ,ElementSize = 55, Padding}) => {
-	const [Places] = useState(Place);
-
+export const Room: React.FC<IProps> = ({Places ,ElementSize = 55, Padding}) => {
+	console.log(Places);
 	return (
 		<div className='Portal'>
 			<button className='Changer-PrevButton'>
 				Назад?
 			</button>
 			<div className='control'>
-				<div className='Auditorium-Container'>
+				<div className='Room-Container'>
 					<div className='HintS'>
 						<div className='HintS-item'>
 							<div className='Important'/>
@@ -34,9 +33,9 @@ export const Room: React.FC<IProps> = ({Place ,ElementSize = 55, Padding}) => {
 							<div>Пустое место</div>
 						</div>
 					</div>
-					<div className='Auditorium-marginAuto'>
+					<div className='Room-marginAuto'>
 						<div className='Numbers-flexRow'>
-							<div className='Auditorium' style={{
+							<div className='Room' style={{
 								width : Places.columns * (ElementSize + Padding),
 								height : Places.rows * (ElementSize + Padding),
 							}}>

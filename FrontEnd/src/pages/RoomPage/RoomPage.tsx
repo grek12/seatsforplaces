@@ -34,13 +34,12 @@ export const RoomPage: React.FC<IProps> = ({id}) => {
 	}
 
 	getRoom();
-	
 	if (Places)
 	return(
 		<div className='PortalPage'>
 			<div className='Portal'>
 				<div className='MainPage-Col'>
-					<Room Place	={Places}  Padding={5}/>
+					<Room Places={Places}  Padding={5}/>
 				</div>
 			</div>
 		</div>
