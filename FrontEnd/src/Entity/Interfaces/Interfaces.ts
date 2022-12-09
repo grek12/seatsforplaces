@@ -34,9 +34,9 @@ export interface IRole{
 }
 
 export enum ETypeSeats{
-    Important,
-    Free,
-    Passage,
+    Important = "Important",
+    Free = "Free",
+    Passage = "Passage",
 }
 
 export enum ERole{

@@ -5,26 +5,6 @@ export const SignIn: React.FC = () =>{
     const [Email, SetEmail] = React.useState("");
     const [Password, SetPassword] = React.useState("");
 
-    // const CheckAuth = async () => {
-    //     const  auth = localStorage.getItem("Token");
-    //     const response = await fetch(BaseURL.concat("/api/test/user"), {
-    //         method: "GET",
-    //         headers: {
-    //             "Accept": "application/json",
-    //             "Content-Type": "application/json",
-    //             "Authorization": "Bearer " + auth,
-    //         }
-    //     })
-    //     if (response.ok === true) {
-    //         const data = await response.json()
-    //         console.log(data);
-    //     } else {
-    //         const errorData = await response.json();
-    //         console.log("errors", errorData);
-    //         alert("Неверный логин или пароль")
-    //     }
-    // }
-
     const toSignIn = async() => {
         if (Email.length > 0 && Password.length > 0)
         {
@@ -39,7 +19,7 @@ export const SignIn: React.FC = () =>{
             if (response.ok === true) {
                 const data = await response.json()
                 localStorage.setItem("Token", data.accessToken);
-                console.log(data);
+                window.location.assign('http://localhost:4000/');
             } else {
                 const errorData = await response.json();
                 console.log("errors", errorData);
@@ -56,7 +36,7 @@ export const SignIn: React.FC = () =>{
                 <h1>Вход</h1>
                 <input type="email" value={Email} placeholder="Email" onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => SetEmail(e.target.value)}/>
                 <input type="password" value={Password} placeholder="Password" onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => SetPassword(e.target.value)}/>
-                <button className='LogInButton' onClick={toSignIn}>Войти!</button>
+                <button className='LogInButton' onClick={toSignIn} type="reset">Войти!</button>
             </div>
         </div>
     );

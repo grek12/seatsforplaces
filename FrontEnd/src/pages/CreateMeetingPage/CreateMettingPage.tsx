@@ -11,7 +11,7 @@ const { Step } = Steps;
 
 
 export const CreateMeetingPage: React.FC = () => {
-	const [Places] = useState<Place>(new Place(new Array<ISeats[]>, 0, 0, new Array<IGuest>, ""));
+	const [Places] = useState<Place>(new Place(new Array<ISeats[]>, 1, 1, new Array<IGuest>, ""));
 	const [CurrentStep, SetCurrentStep] = useState(0);
 
 
@@ -57,7 +57,7 @@ export const CreateMeetingPage: React.FC = () => {
 				<div className='PortalPage'>
 				<div className='Portal'>
 					<div className='MainPage-Col'>
-						<Seating Places={Places}  Padding={5} nextStep={() => SetCurrentStep(CurrentStep + 1)}
+						<Seating Places={Places}  Padding={5}
 							prevStep={() => SetCurrentStep(CurrentStep - 1)}/>
 						<div className="MainPage-Steps">
 							<Steps current={CurrentStep} className="MainPage-Stepper">

@@ -12,7 +12,6 @@ interface IProps{
 }
 
 export const SeatingSeat: React.FC<IProps> = ({Col, Row, Size, left = 0, top = 0, type}) => {
-
     if (type == ETypeSeats.Free){
         return (
             <div className="SeatingSeat PlaceSeat" style={{
