@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Panel from '../../components/Panel';
 import { Place } from '../../Entity/Classes/Classes';
 import { BaseURL } from '../../Entity/Constants/Constants';
@@ -8,6 +9,8 @@ import "./AllMeetingsPage.scss"
 
 export const AllMeetingsPage: React.FC = () => {
     const [Places, SetPlaces] = React.useState(new Array<Place>)
+    const navigate = useNavigate();
+
     const getMeetings = async () => {
 		const response = await fetch(BaseURL.concat("/api/test/user/events"), {
 			method: "GET",
@@ -25,7 +28,6 @@ export const AllMeetingsPage: React.FC = () => {
                 m.push(p);
             }
             SetPlaces(m);
-            console.log(m);
 		} else {
 			const errorData = await response.json();
 			console.log("errors", errorData);
@@ -33,8 +35,13 @@ export const AllMeetingsPage: React.FC = () => {
 		}
 	}
 
-    if (Places.length == 0)
-        getMeetings();
+    const toRoom = (id : number) => {
+        navigate("/Room/" + id)
+    }
+
+    React.useEffect(() => {
+		getMeetings();
+	}, [])
 
     return(
         <div className='PortalPage'>
@@ -42,7 +49,7 @@ export const AllMeetingsPage: React.FC = () => {
                 <div className='MainPage-Col'>
                 {
                     Places.map((place) =>
-                        <Panel key={place.id ? place.id : 0} placeName={place.placeName} id={place.id} datetime={place.datetime?? "2022-12-20 12:12"}/>   
+                        <Panel key={place.id ? place.id : 0} placeName={place.placeName} id={place.id} datetime={place.datetime?? "2022-12-20 12:12"} ToRoom={toRoom}/>   
                     )
                 }
                 </div>

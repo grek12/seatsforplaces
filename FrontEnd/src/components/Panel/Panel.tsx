@@ -5,9 +5,10 @@ interface IProps{
     placeName : string;
     id : number | undefined;
     datetime : string;
+    ToRoom(id : number | undefined) : void;
 }
 
-export const Panel: React.FC<IProps> = ({placeName, id, datetime}) => {
+export const Panel: React.FC<IProps> = ({placeName, id, datetime, ToRoom}) => {
         const Udatetime = datetime.split(" ");
         const date = Udatetime[0].split("-");
         const day = date[2];
@@ -19,7 +20,7 @@ export const Panel: React.FC<IProps> = ({placeName, id, datetime}) => {
         const min = time[1];
         return (
             <div className='Meeting-flex'>
-                <button placeholder='Занять место!' className='button-Absolute'>
+                <button placeholder='Занять место!' className='button-Absolute' onClick={() => ToRoom(id)}>
                     Занять место!
                 </button>
                 <div className="MeetingContainer" style={{
