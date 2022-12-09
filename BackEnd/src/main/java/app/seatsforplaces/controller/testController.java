@@ -5,6 +5,7 @@ import app.seatsforplaces.model.Event;
 
 import app.seatsforplaces.payload.response.MessageResponse;
 import app.seatsforplaces.service.impl.EventServiceImpl;
+import app.seatsforplaces.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +22,8 @@ public class testController {
     @Autowired
     private EventServiceImpl eventService;
 
+    @Autowired
+    private UserServiceImpl userService;
     
 
     @PostMapping("/user/testcreateevent")
@@ -68,7 +71,14 @@ public class testController {
     }
 
 
-    @PostMapping("/user/updateeevent")
+    @GetMapping("/user/getnum")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<?> userGetNum() {
+        return ResponseEntity
+                .ok(userService.getNum());
+    }
+
+        @PostMapping("/user/updateeevent")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> updateEvent(@RequestBody Event event){
 
