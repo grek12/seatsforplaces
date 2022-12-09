@@ -53,8 +53,8 @@ public class EventServiceImpl implements EventService {
 
             List <Seat> col = Arrays.stream(event.getSeats()).flatMap(Arrays::stream).collect(Collectors.toList());
             seatRepository.saveAllAndFlush(col);
-
-            return event.getId();
+            Long eventId = event.getId();
+            return eventId;
         }else{
         return Long.valueOf(0);
         }
