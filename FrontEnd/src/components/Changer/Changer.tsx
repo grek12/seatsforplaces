@@ -1,6 +1,8 @@
 import { Input, InputNumber, Button, List } from 'antd';
 import React, { useState } from 'react';
+import type { DatePickerProps, TimePickerProps } from 'antd';
 import { IPlace, ISeats, ETypeSeats} from '../../Entity/Interfaces/Interfaces';
+import { DatePicker, TimePicker } from 'antd';
 import "./Changer.scss"
 import { Guest, Seats } from '../../Entity/Classes/Classes';
 
@@ -14,7 +16,8 @@ interface IProps{
 export const Changer: React.FC<IProps> = ({Places, nextStep}) => {
     let CurrentGuest = new Guest("");
     const [Guests, SetGuests] = useState<Guest[]>(Places.guest);
-
+    const [Date, SetDate] = useState("2012-12-12");
+    const [Time, SetTime] = useState("20:20");
     const AddGuest = () => {
         if (CurrentGuest)
         {
@@ -23,6 +26,15 @@ export const Changer: React.FC<IProps> = ({Places, nextStep}) => {
             CurrentGuest = new Guest("");
         }
     }
+
+    const onChangeTime: TimePickerProps['onChange'] = (time, timeString) => {
+        SetTime(timeString);
+        Places.datetime = Date.concat(" ", Time);
+      };
+
+    const onChangeDate: DatePickerProps['onChange'] = (date, dateString) => {
+        SetDate(dateString);
+      };
 
     const onPlaceNameChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         Places.placeName = e.target.value;
@@ -57,6 +69,11 @@ export const Changer: React.FC<IProps> = ({Places, nextStep}) => {
                         <div className='Changer-InputGroup'>
                             <div className='Changer-Text'>Введите название мероприятия</div>
                             <Input className='Changer-margin' showCount maxLength={20} placeholder="Название" onChange={onPlaceNameChange}/>
+                            <div className='Changer-Text Changer-margin'>Дата проведения</div>
+                            <div className='Changer-InputGroup-Row'>
+                                <DatePicker onChange={onChangeDate} placeholder="Дата"/>
+                                <TimePicker onChange={onChangeTime} placeholder="Время"/>
+                            </div>
                             <div className='Changer-InputGroup Changer-width'>
                                 <div className='Changer-InputGroup-Row'>
                                     <div className='Changer-Text'>

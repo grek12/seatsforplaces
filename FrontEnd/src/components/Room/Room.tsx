@@ -11,12 +11,8 @@ interface IProps{
 }
 
 export const Room: React.FC<IProps> = ({Places ,ElementSize = 55, Padding}) => {
-	console.log(Places);
 	return (
 		<div className='Portal'>
-			<button className='Changer-PrevButton'>
-				Назад?
-			</button>
 			<div className='control'>
 				<div className='Room-Container'>
 					<div className='HintS'>
@@ -56,9 +52,6 @@ export const Room: React.FC<IProps> = ({Places ,ElementSize = 55, Padding}) => {
 				<List size='large' dataSource={Places.guest}
 					renderItem={g => <List.Item>{g.name}</List.Item>}/>
 			</div>
-			<button className='Changer-NextButton'>
-				Создать?
-			</button>
 		</div> 
 	);
 }   

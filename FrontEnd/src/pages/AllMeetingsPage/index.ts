@@ -1,0 +1,1 @@
+export {AllMeetingsPage as default} from "./AllMeetingsPage";

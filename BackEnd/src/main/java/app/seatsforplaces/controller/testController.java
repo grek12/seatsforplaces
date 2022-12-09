@@ -64,7 +64,6 @@ public class testController {
     @GetMapping("/user/event/{eventId}")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> getEvent(@PathVariable Long  eventId){
-
         return ResponseEntity.ok(eventService.getEvent(eventId));
     }
 

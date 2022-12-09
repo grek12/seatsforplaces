@@ -25,7 +25,7 @@ export const Seating: React.FC<IProps> = ({Places, ElementSize = 55, Padding, pr
 				"Authorization": "Bearer " + localStorage.getItem("Token")},
 			body: JSON.stringify({
 				address : "Kazan",
-				datetime : "2023-10-17 12:43",
+				datetime : Places.datetime,
 				nameevent : Places.placeName,
 				columns : Places.columns,
 				rows : Places.rows,
