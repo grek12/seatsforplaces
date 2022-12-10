@@ -1,0 +1,38 @@
+@import "../../../ui-kit/styles/index";
+
+.TakenSeat{
+    border-radius: 8px;
+    &-Empty{
+        border-radius: 8px;
+        background-color: $color-second;
+    }
+    &-pas{
+        border-radius: 8px;
+    }
+    &-current{
+        border-radius: 8px;
+        background-color: greenyellow;
+    }
+    &-Empty:hover{
+        border:1px solid #1b4965a5;
+    }
+    &-Taken{
+        border-radius: 8px;
+        background-color: $color-disabled-secondary;
+        border:1px solid #1b4965a5;
+    }
+}
+
+.TakenSeat:hover{
+    border:1px solid #000;
+}
+
+.PlaceSeat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.PlaceSeatNumber{
+    user-select: none;
+}

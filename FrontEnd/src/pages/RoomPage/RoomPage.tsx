@@ -5,6 +5,7 @@ import { BaseURL } from '../../Entity/Constants/Constants';
 import "./RoomPage.scss"
 import { Place } from '../../Entity/Classes/Classes';
 
+
 export const RoomPage: React.FC = () => {
 	const [Places, SetPlaces] = useState<Place>();
 	const {id} = useParams();

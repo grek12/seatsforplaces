@@ -1,0 +1,1 @@
+export { TakeSeat as default } from "./TakeSeat" 

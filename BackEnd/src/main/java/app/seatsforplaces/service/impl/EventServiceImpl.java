@@ -85,7 +85,7 @@ public class EventServiceImpl implements EventService {
 
         eventRepository.findById(eventId).get().setGuests(event.getGuests());
 
-      //  guestRepository.saveAllAndFlush(event.getGuests());
+        guestRepository.saveAllAndFlush(event.getGuests());
         return true;
     }
 }

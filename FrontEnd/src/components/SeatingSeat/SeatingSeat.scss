@@ -7,6 +7,10 @@
         border-radius: 8px;
         background-color: #FFF;
     }
+    &-current{
+        border-radius: 8px;
+        background-color: greenyellow;
+    }
     &-important{
         border-radius: 8px;
         background-color: $color-orange;

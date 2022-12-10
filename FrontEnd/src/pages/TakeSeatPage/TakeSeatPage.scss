@@ -1,0 +1,81 @@
+@import "../../ui-kit/styles/index";
+
+.MainPage{
+    position: relative;
+    &-Col{
+        display: flex;
+        flex-direction: column;
+        &-RoomName{
+            @include roboto-16-bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 8px;
+            border-style: solid;
+            border-width: 0px;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 1rem -0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+    &-Row{
+        display: flex;
+        flex-direction: row;
+        &-RoomName{
+            @include roboto-16-bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 8px;
+            border-style: solid;
+            border-width: 0px;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 1rem -0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+        }
+    }
+    &-Steps{
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        height: 100px;
+        margin: 1rem;
+        margin-top: -0.5rem;
+    }
+    &-Stepper{
+        margin-left: 2rem !important;
+        margin-right: 2rem !important;
+    }
+}
+
+.buttonHeight{
+    margin-left: -0.5rem !important;
+    margin-top: 100px !important;
+    margin-bottom: auto;
+    margin: 0;
+    height: calc(700px  + 1rem + 120px);
+}
+
+.margin-05rem-bottom{
+    margin-bottom: 0.5rem;
+}
+
+.margin-05rem-left{
+    margin-left: 0.5rem;
+}

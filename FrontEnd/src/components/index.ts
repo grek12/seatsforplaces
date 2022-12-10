@@ -10,6 +10,8 @@ import SignControls from "./SignControls";
 import Number from "./Number";
 import Changer from "./Changer";
 import Auditorium from "./Auditorium";
+import TakeSeat from "./TakeSeatComponents/TakeSeat";
+import TakeRoom from "./TakeSeatComponents/TakeRoom";
 
 export {
     App,
@@ -24,4 +26,6 @@ export {
     Layout,
     LogIn,
     Number,
+    TakeSeat,
+    TakeRoom,
 };

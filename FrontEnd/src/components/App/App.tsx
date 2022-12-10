@@ -5,6 +5,7 @@ import {
   } from "react-router-dom";
 import { CreateMeetingPage, LogInPage, MainPage, RoomPage  } from "../../pages";
 import AllMeetingsPage from "../../pages/AllMeetingsPage";
+import TakeSeatPage from "../../pages/TakeSeatPage";
 import Layout from "../Layout";
 
 // interface IProps{
@@ -22,10 +23,10 @@ export const App: React.FC = () => {
 			<Layout>
 				<Routes>
 					<Route path='/CreateMeeting' element={<CreateMeetingPage/>}/>
-					{/* <Route path='/CreateMeeting/:id/:idG' element={<Qwe id={5} idG={q}/>}/> */}
 					<Route path='/Sign' element={ <LogInPage/>}/>
 					<Route path='/' element={<MainPage/>}/>
 					<Route path='/Room/:id' element={<RoomPage/>}/>
+					<Route path='/TakeSeat/:id' element={<TakeSeatPage/>}/>
 					<Route path='/AllMeetings' element={<AllMeetingsPage/>}/>
 				</Routes>
 			</Layout>

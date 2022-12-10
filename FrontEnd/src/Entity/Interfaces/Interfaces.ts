@@ -38,6 +38,9 @@ export enum ETypeSeats{
     Important = "Important",
     Free = "Free",
     Passage = "Passage",
+    Empty = "Empty",
+    Taken = "Taken",
+    Current = "Current",
 }
 
 export enum ERole{

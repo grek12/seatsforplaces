@@ -11,35 +11,34 @@ export const AllMeetingsPage: React.FC = () => {
     const [Places, SetPlaces] = React.useState(new Array<Place>)
     const navigate = useNavigate();
 
-    const getMeetings = async () => {
-		const response = await fetch(BaseURL.concat("/api/test/user/events"), {
-			method: "GET",
-			headers: {
-				"Accept": "application/json",
-				"Content-Type": "application/json",
-				"Authorization": "Bearer " + localStorage.getItem("Token")},
-		})
-		if (response.ok === true) {
-			const data = await response.json();
-            const m = new Array<Place>();
-            for (let i = 0; i < data.length; i++)
-            {
-			    const p = new Place(data[i].seats, data[i].rows, data[i].columns, data[i].guests, data[i].nameevent, data[i].id, data[i].datetime);
-                m.push(p);
-            }
-            SetPlaces(m);
-		} else {
-			const errorData = await response.json();
-			console.log("errors", errorData);
-			alert("Что-то пошло не так")
-		}
-	}
-
     const toRoom = (id : number) => {
-        navigate("/Room/" + id)
+        navigate("/TakeSeat/" + id)
     }
 
     React.useEffect(() => {
+        const getMeetings = async () => {
+            const response = await fetch(BaseURL.concat("/api/test/user/events"), {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("Token")},
+            })
+            if (response.ok === true) {
+                const data = await response.json();
+                const m = new Array<Place>();
+                for (let i = 0; i < data.length; i++)
+                {
+                    const p = new Place(data[i].seats, data[i].rows, data[i].columns, data[i].guests, data[i].nameevent, data[i].id, data[i].datetime);
+                    m.push(p);
+                }
+                SetPlaces(m);
+            } else {
+                const errorData = await response.json();
+                console.log("errors", errorData);
+                alert("Что-то пошло не так")
+            }
+        }
 		getMeetings();
 	}, [])
 
