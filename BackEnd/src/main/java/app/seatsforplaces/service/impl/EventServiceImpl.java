@@ -81,8 +81,11 @@ public class EventServiceImpl implements EventService {
         Long userId = userTemp.getId();
         Long eventId =event.getId();
         eventRepository.findById(eventId).get().setSeats(event.getSeats());
+
+
         eventRepository.findById(eventId).get().setGuests(event.getGuests());
 
+        guestRepository.saveAllAndFlush(event.getGuests());
         return true;
     }
 }

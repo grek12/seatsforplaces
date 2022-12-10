@@ -24,8 +24,8 @@ public class testController {
 
     @Autowired
     private UserServiceImpl userService;
-    
 
+    @CrossOrigin(origins = "*", maxAge = 3600)
     @PostMapping("/user/testcreateevent")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> newEventTest(@RequestBody Event newEvent){
@@ -64,6 +64,8 @@ public class testController {
         return ResponseEntity.ok(eventService.getAll());
     }
 
+
+    @CrossOrigin(origins = "*", maxAge = 3600)
     @GetMapping("/user/event/{eventId}")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> getEvent(@PathVariable Long  eventId){
