@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
 							Seats For Places
 					</NavLink>
 					<div className="Header-Menu">
-							<Link className="Header-Menu-Item" to='/CreateMeeting'>
+							<Link className="Header-Menu-Item" to='/AllMeetings'>
 							Просмотр мероприятий
 							</Link>
 							<Link className="Header-Menu-Item" to='/CreateMeeting'>
@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
 							Seats For Places
 					</NavLink>
 					<div className="Header-Menu">
-							<Link className="Header-Menu-Item" to='/CreateMeeting'>
+							<Link className="Header-Menu-Item" to='/AllMeetings'>
 							Просмотр мероприятий
 							</Link>
 							<Link className="Header-Menu-Item" to='/CreateMeeting'>

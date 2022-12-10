@@ -4,6 +4,7 @@ export interface IPlace{
     array : ISeats[][];
     guest : IGuest[];
     placeName : string;
+    datetime? : string;
 }
 
 export interface IGuest{

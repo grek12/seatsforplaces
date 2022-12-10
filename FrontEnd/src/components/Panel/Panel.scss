@@ -1,0 +1,45 @@
+@import "../../ui-kit/styles/index";
+
+.MeetingContainer{
+    @include roboto-28-medium;
+    height: 150px;
+    width: 600px;
+    margin-right: -10%;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.MeetingDateTime{
+    margin-top: 30px;
+    @include roboto-14-bold;
+}
+
+.Meeting-flex{
+    width: 850px;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 150px;
+    grid-template-columns: 70% 30%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    &-Row{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.button-Absolute{
+    border-radius: 0px 8px 8px 0px;
+    height: 150px;
+    width: 250px;
+    z-index: 1;
+}

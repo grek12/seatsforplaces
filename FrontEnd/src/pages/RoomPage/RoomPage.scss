@@ -1,8 +1,33 @@
+@import "../../ui-kit/styles/index";
+
 .MainPage{
     position: relative;
     &-Col{
         display: flex;
         flex-direction: column;
+        &-RoomName{
+            @include roboto-16-bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 8px;
+            border-style: solid;
+            border-width: 0px;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 1rem -0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+    &-Row{
+        display: flex;
+        flex-direction: row;
     }
     &-Steps{
         background-color: #fff;

@@ -1,19 +1,23 @@
 import { IGuest, IPlace, ISeats, ETypeSeats, IRole, IUser } from "../Interfaces/Interfaces";
 
 export class Place implements IPlace{
+    id? : number;
     columns : number;
     rows : number;
     array : ISeats[][];
     guest : IGuest[];
     placeName : string;
+    datetime? : string;
     constructor (Array : ISeats[][], Rows : number, Columns : number,
-         Guest : IGuest[], PlaceName : string)
+         Guest : IGuest[], PlaceName : string, Id? : number, Datetime?: string)
     {
         this.columns = Columns;
         this.array = Array;
         this.rows = Rows;
         this.guest = Guest;
         this.placeName = PlaceName;
+        this.id = Id;
+        this.datetime = Datetime;
     }
 }
 

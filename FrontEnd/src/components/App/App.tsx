@@ -4,6 +4,7 @@ import {
 	Route
   } from "react-router-dom";
 import { CreateMeetingPage, LogInPage, MainPage, RoomPage  } from "../../pages";
+import AllMeetingsPage from "../../pages/AllMeetingsPage";
 import Layout from "../Layout";
 
 // interface IProps{
@@ -16,7 +17,6 @@ import Layout from "../Layout";
 // }
 
 export const App: React.FC = () => {
-	const q = window.location.href.split("/").reverse()[0];
 	return (
 		<div>
 			<Layout>
@@ -25,7 +25,8 @@ export const App: React.FC = () => {
 					{/* <Route path='/CreateMeeting/:id/:idG' element={<Qwe id={5} idG={q}/>}/> */}
 					<Route path='/Sign' element={ <LogInPage/>}/>
 					<Route path='/' element={<MainPage/>}/>
-					<Route path='/Room/:id' element={<RoomPage id={q}/>}/>
+					<Route path='/Room/:id' element={<RoomPage/>}/>
+					<Route path='/AllMeetings' element={<AllMeetingsPage/>}/>
 				</Routes>
 			</Layout>
 		</div>

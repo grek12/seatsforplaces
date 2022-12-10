@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import Room from '../../components/Room';
+import { useParams } from "react-router-dom"
 import { BaseURL } from '../../Entity/Constants/Constants';
 import "./RoomPage.scss"
 import { Place } from '../../Entity/Classes/Classes';
 
-interface IProps{
-	id: string;
-}
-
-
-export const RoomPage: React.FC<IProps> = ({id}) => {
+export const RoomPage: React.FC = () => {
 	const [Places, SetPlaces] = useState<Place>();
-
-	const getRoom = async () => {
-		if (!Places){
+	const {id} = useParams();
+	
+	React.useEffect(() => {
+		const getRoom = async () => {
+			console.log("/api/test/user/event/"+id);
 			const response = await fetch(BaseURL.concat("/api/test/user/event/"+id), {
 				method: "GET",
 				headers: {
@@ -24,7 +22,6 @@ export const RoomPage: React.FC<IProps> = ({id}) => {
 			if (response.ok === true) {
 				const data = await response.json()
 				const p = new Place(data.seats, data.rows, data.columns, data.guests, data.nameevent);
-				console.log(data);
 				SetPlaces(p);
 			} else {
 				const errorData = await response.json();
@@ -32,15 +29,25 @@ export const RoomPage: React.FC<IProps> = ({id}) => {
 				alert("Что-то пошло не так")
 			}
 		}
-	}
+		getRoom();
+	}, [id])
 
-	getRoom();
 	if (Places)
 	return(
 		<div className='PortalPage'>
 			<div className='Portal'>
-				<div className='MainPage-Col'>
-					<Room Places={Places}  Padding={5}/>
+				<div className='MainPage-Row'>
+					<div className='MainPage-Col'>
+					<div className='MainPage-Col-RoomName'>
+							<div>
+								{Places.placeName}
+							</div>
+							<div>
+								#{id}
+							</div>
+						</div>
+						<Room Places={Places}  Padding={5}/>
+					</div>
 				</div>
 			</div>
 		</div>
